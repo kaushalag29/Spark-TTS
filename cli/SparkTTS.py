@@ -91,6 +91,7 @@ class SparkTTS:
                 "<|end_global_token|>",
                 "<|start_semantic_token|>",
                 semantic_tokens,
+                "<|end_semantic_token|>",
             ]
         else:
             inputs = [
@@ -191,6 +192,7 @@ class SparkTTS:
             prompt, global_token_ids = self.process_prompt(
                 text, prompt_speech_path, prompt_text
             )
+
         model_inputs = self.tokenizer([prompt], return_tensors="pt").to(self.device)
 
         # Generate speech using the model

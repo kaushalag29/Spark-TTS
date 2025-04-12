@@ -203,6 +203,7 @@ class SparkTTS:
             top_k=top_k,
             top_p=top_p,
             temperature=temperature,
+            pad_token_id=self.tokenizer.eos_token_id
         )
 
         # Trim the output tokens to remove the input tokens

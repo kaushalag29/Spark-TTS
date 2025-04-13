@@ -185,6 +185,12 @@ class SparkTTS:
         Returns:
             torch.Tensor: Generated waveform as a tensor.
         """
+        seed = 0
+        torch.manual_seed(seed)
+        # np.random.seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+
         if gender is not None:
             prompt = self.process_prompt_control(gender, pitch, speed, text)
 
